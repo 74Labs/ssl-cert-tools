@@ -4,10 +4,14 @@ IF "%1"=="" GOTO ERROR
 IF "%2"=="" GOTO ERROR
 IF "%3"=="" GOTO ERROR
 
-"%JAVA_HOME%\bin\keytool" -delete -keystore %1 -storepass %2 -alias %3 -keypass %2
+ECHO.
+ECHO Importing certificate...
 
-GOTO :EOF
-
+"%JAVA_HOME%\bin\keytool" -import ^
+	-keystore %1 -storepass %2 ^
+	-alias %3 -keypass %2 ^
+	-file %3.cer
+	
 :ERROR
 
 ECHO.
@@ -16,4 +20,4 @@ ECHO.
 ECHO Usage: KEYSTORE PASSWORD ALIAS
 ECHO.
 
-:EOF
+:EOF	

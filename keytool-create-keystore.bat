@@ -6,8 +6,9 @@ IF "%2"=="" GOTO ERROR
 ECHO.
 ECHO Creating temporary entry...
 
-"%JAVA_HOME%\bin\keytool" -keystore %1 -storepass %2 ^
-	-genkey -alias temp_alias -keypass %2 ^
+"%JAVA_HOME%\bin\keytool" -genkey ^
+	-keystore %1 -storepass %2 ^
+	-alias temp_alias -keypass %2 ^
 	-dname "CN=temp_alias, OU=temp_ou, O=temp_o, L=temp_l, S=temp_s, C=PL"
 
 ECHO.

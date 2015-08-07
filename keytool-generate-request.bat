@@ -8,14 +8,15 @@ IF "%~4"=="" GOTO ERROR
 ECHO.
 ECHO Creating entry...
 
-"%JAVA_HOME%\bin\keytool" -keystore %1 -storepass %2 ^
-	-keypass %2 -alias %3 -genkeypair -keysize 2048 -keyalg RSA ^
+"%JAVA_HOME%\bin\keytool" -genkeypair -keysize 2048 -keyalg RSA ^
+	-keystore %1 -storepass %2 ^
+	-alias %3 -keypass %2 ^
 	-dname "CN=%3, C=PL" -ext san="%~4"
 
 ECHO.
 ECHO Generating request...
 
-"%JAVA_HOME%\bin\keytool" -certreq -keystore %1 -storepass %2 -keypass %2 -alias %3 -ext san="%~4" -file %3.csr
+"%JAVA_HOME%\bin\keytool" -certreq -keystore %1 -storepass %2 -alias %3 -keypass %2 -ext san="%~4" -file %3.csr
 
 GOTO :EOF
 
