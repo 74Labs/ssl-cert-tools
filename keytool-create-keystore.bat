@@ -13,13 +13,13 @@ ECHO Creating temporary entry...
 ECHO.
 ECHO Deleting temporary entry...
 
-call keytool-delete-cert.bat %1 %2 temp_alias
+call "%~dp0keytool-delete-cert.bat" %1 %2 temp_alias
 
 ECHO.
 ECHO Checking keystore...
 ECHO.
 
-call keytool-list-cert.bat %1 %2
+call "%~dp0keytool-list-cert.bat" %1 %2
 
 GOTO :EOF
 
