@@ -12,6 +12,8 @@ ECHO Importing certificate...
 	-alias %3 -keypass %2 ^
 	-file %3.cer
 	
+GOTO :EOF	
+	
 :ERROR
 
 ECHO.
